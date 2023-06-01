@@ -1,23 +1,23 @@
-class LocalStorage {
-  getItem(key) {
+const LocalStorage = () => {
+  const getItem = (key) => {
     let item = null;
     if (localStorage.getItem(key)) {
       item = localStorage.getItem(key);
     }
     return item;
-  }
+  };
 
-  setItem(key, value) {
+  const setItem = (key, value) => {
     localStorage.setItem(key, value);
-  }
+  };
 
-  removeItem(key) {
+  const removeItem = (key) => {
     localStorage.remove(key);
-  }
+  };
 
-  clearItem() {
+  const clearItem = () => {
     localStorage.clear();
-  }
-}
+  };
+};
 
-export default new LocalStorage();
+export default LocalStorage;

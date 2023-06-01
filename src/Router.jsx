@@ -1,27 +1,45 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Nav from "./components/nav/nav";
+import Home from "./components/home/home";
 import Login from "./components/login/login";
+import RegisterFirst from "./components/register/registerFirst/registerFirst";
+import RegisterSecond from "./components/register/registerSecond/registerSecond";
+import MyInfo from "./components/myInfo/myInfo";
+import MyClassroom from "./components/myInfo/myClassroom/myClassroom";
 
-const Main = "main";
-const Register = "Register";
-const MyInfo = null;
-const Class = null;
-const Survey = null;
-const Attendance = null;
-const Question = null;
+// const AfterClass = <div>class</div>;
+// const Survey = <div>Survey</div>;
+// const Attendance = <div>Attendance</div>;
+// const Question = <div>Question</div>;
 
 function Router() {
+  const renderOfNav = (components) => {
+    return (
+      <div>
+        <Nav />
+        {components}
+      </div>
+    );
+  };
+
   return (
-    <Routes>
-      <Route path="/" Component={Main} /> {/* 메인 */}
-      <Route path="/login" Component={Login} /> {/* 로그인 */}
-      <Route path="/register" Component={Register} /> {/* 회원가입 */}
-      <Route path="/myInfo" Component={MyInfo} /> {/* 내 정보 */}
-      <Route path="/class" Component={Class} /> {/* 방과후 조회 & 신청 */}
-      <Route path="/survey" Component={Survey} /> {/* 설문 */}
-      <Route path="/attendance" Component={Attendance} /> {/* 출석 체크 */}
-      <Route path="/question" Component={Question} /> {/* Question */}
-    </Routes>
+    <div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/registerFirst" element={<RegisterFirst />} />
+        <Route path="/registerSecond" element={<RegisterSecond />} />
+        {/* <Route path="/registerThird" element={<RegisterThird />} /> */}{" "}
+        {/* //TODO :: 인증시스템 이후 */}
+        <Route path="/home" element={renderOfNav(<Home />)} />
+        <Route path="/myInfo" element={renderOfNav(<MyInfo />)} />
+        <Route path="/myInfo/class" element={renderOfNav(<MyClassroom />)} />
+        {/* <Route path="/class" element={renderOfNav(<AfterClass />)} /> */}
+        {/* <Route path="/survey" element={renderOfNav(<Survey />)} /> */}
+        {/* <Route path="/attendance" element={renderOfNav(<Attendance />)} /> */}
+        {/* <Route path="/question" element={renderOfNav(<Question />)} /> */}
+      </Routes>
+    </div>
   );
 }
 

@@ -1,0 +1,107 @@
+#myInfo-page-container {
+  display: flex;
+  justify-content: center;
+  background-color: #f6f6f6;
+  height: 88vh;
+  flex-direction: row;
+}
+
+#myInfo-field-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  margin-right: 10%;
+  width: 15vh;
+}
+
+#field-title-container {
+  font-size: 25px;
+  font-weight: bolder;
+  margin-bottom: 10%;
+}
+
+.myInfo-field {
+  margin-top: 20%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#myInfo-container {
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#myInfo-title-container {
+  font-size: 25px;
+  font-weight: bolder;
+  margin-bottom: 1%;
+  width: 80vh;
+}
+
+#myInfo-content-container {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3%;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: row;
+}
+
+#myInfo-content-title-container {
+  margin-left: 5%;
+  margin-top: 5%;
+  font-weight: bold;
+  font-size: large;
+}
+
+#myInfo-content-line-container {
+  margin-left: 5%;
+  display: flex;
+  height: 100%;
+}
+
+#myInfo-content-line {
+  margin-top: 40px;
+  border: 1px solid #dfdfdf;
+  height: 80%;
+}
+
+#profile-content-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  margin-left: 10%;
+  width: 100%;
+}
+
+.profile-content {
+  margin-bottom: 6%;
+}
+
+.profile-content-title {
+  font-size: medium;
+  color: #979696;
+}
+
+.profile-content-content {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border: 1px solid #d1cfcf;
+  border-radius: 5px;
+}
+
+.profile-content-content div {
+  margin-left: 5%;
+}
+
+.changeable-content {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+}

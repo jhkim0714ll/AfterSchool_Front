@@ -1,0 +1,71 @@
+nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+#nav-container-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+#nav-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  height: 80px;
+  background-color: white;
+}
+
+#user-link-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 7%;
+  margin-top: 1%;
+}
+
+#nav-link-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 3%;
+  margin-bottom: 2%;
+  width: 100%;
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.user-info {
+  margin-right: 10px;
+}
+
+.user-info a {
+  text-decoration: none;
+  text-decoration-line: none;
+  color: black;
+  cursor: pointer;
+}
+
+#home-link {
+  margin-left: 5%;
+}
+
+#home-link-img {
+  width: 100%;
+}
+
+#after-school-link {
+  margin-left: 20%;
+}
+
+.link {
+  margin-right: 10%;
+}
+
+.link-title {
+  color: black;
+  text-decoration-line: none;
+}

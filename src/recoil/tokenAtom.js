@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const isTokenData = atom({
-  key: "isTokenData",
+export const isTokenAtom = atom({
+  key: "isTokenAtom",
   default: false,
 });

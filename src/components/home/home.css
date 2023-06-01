@@ -1,0 +1,173 @@
+#home-page-container {
+  display: flex;
+  justify-content: center;
+  background-color: #f6f6f6;
+  height: 88vh;
+}
+
+#card-container {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+#card-first-container {
+  width: 35%;
+  margin-right: 1.5%;
+}
+
+#card-second-container {
+  width: 20%;
+  margin-left: 1.5%;
+}
+
+#class-card-container {
+  height: 30%;
+  margin-bottom: 5%;
+}
+
+#big-adv-card-container {
+  height: 18%;
+  margin-bottom: 5%;
+  overflow: hidden;
+}
+
+#link-card-container {
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+}
+
+#attendance-card-container {
+  width: 48%;
+  margin-right: 2%;
+  height: 80%;
+}
+
+#survey-card-cotainer {
+  width: 48%;
+  margin-left: 2%;
+  height: 80%;
+}
+
+#smaill-adv-card-container {
+  height: 10%;
+  margin-bottom: 7%;
+}
+
+#meal-card-container {
+  height: 39.5%;
+  margin-bottom: 7%;
+}
+
+#school-card-container {
+  height: 16%;
+}
+
+.card-title {
+  margin: 15px;
+}
+
+.class-card-content {
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  height: 70%;
+}
+
+.class-card-content div {
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.class-card-content div div {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.bidAdv-card-content img {
+  max-width: 100%;
+}
+
+.meal-card-content {
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  font-size: medium;
+}
+
+.meal-content {
+  margin-top: 5px;
+}
+
+.meal-content-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.attendance-card-content {
+  display: flex;
+  justify-content: right;
+  margin-right: 15px;
+  align-items: center;
+  height: 100%;
+}
+
+.attendance-card-content a {
+  color: black;
+  text-decoration: none;
+}
+
+.survey-card-content {
+  display: flex;
+  justify-content: right;
+  margin-right: 15px;
+  align-items: center;
+  height: 100%;
+}
+
+.survey-card-content a {
+  color: black;
+  text-decoration: none;
+}
+
+.meal-content-title img {
+  width: 40;
+}
+
+.smallAdv-card-content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.school-card-content {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+}
+
+.school-card-content img {
+  width: 30%;
+}
+
+.class-card-content div a {
+  text-decoration: none;
+  color: black;
+}
+
+.meal-card-content div a {
+  text-decoration: none;
+  color: black;
+}
