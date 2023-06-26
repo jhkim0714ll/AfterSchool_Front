@@ -3,8 +3,10 @@ import { NavLink } from "react-router-dom";
 import "./nav.css";
 import MainLogo from "../../assets/img/main_logo.svg";
 import NoticeLogo from "../../assets/img/bell_icon.svg";
+import useNav from "../../Hooks/nav/nav";
 
 const Nav = () => {
+  const { userInfo, isToken, sumitLogout } = useNav();
   return (
     <nav>
       <div id="home-link">
@@ -14,14 +16,24 @@ const Nav = () => {
       </div>
       <div id="nav-container-container">
         <div id="user-link-container">
-          <div className="user-info">게스트님 환영합니다</div>
+          <div className="user-info">
+            {userInfo.name}{" "}
+            {userInfo.role
+              .replace("STUDENT", "학생 환영합니다")
+              .replace("TEACHER", "선생님 환영합니다")
+              .replace("ADMIN", "관리자님 환영합니다")}
+          </div>
           <div className="user-info">|</div>
           <div className="user-info">
             <a href="/myInfo">마이페이지</a>
           </div>
           <div className="user-info">|</div>
           <div className="user-info">
-            <a href="/login">로그인</a>
+            {isToken === false ? (
+              <NavLink to="/login">로그인</NavLink>
+            ) : (
+              <div onClick={sumitLogout}>로그아웃</div>
+            )}
           </div>
         </div>
         <div id="nav-container">

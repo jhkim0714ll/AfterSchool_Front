@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   background-color: #f6f6f6;
-  height: 88vh;
+  height: 100vh;
 }
 
 #card-container {
@@ -26,12 +26,14 @@
 #class-card-container {
   height: 30%;
   margin-bottom: 5%;
+  background-color: white;
 }
 
 #big-adv-card-container {
   height: 18%;
   margin-bottom: 5%;
   overflow: hidden;
+  background-color: white;
 }
 
 #link-card-container {
@@ -44,26 +46,31 @@
   width: 48%;
   margin-right: 2%;
   height: 80%;
+  background-color: white;
 }
 
 #survey-card-cotainer {
   width: 48%;
   margin-left: 2%;
   height: 80%;
+  background-color: white;
 }
 
 #smaill-adv-card-container {
   height: 10%;
   margin-bottom: 7%;
+  background-color: white;
 }
 
 #meal-card-container {
   height: 39.5%;
   margin-bottom: 7%;
+  background-color: white;
 }
 
 #school-card-container {
   height: 16%;
+  background-color: white;
 }
 
 .card-title {

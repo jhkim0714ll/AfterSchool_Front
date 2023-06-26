@@ -2,5 +2,5 @@ import { atom } from "recoil";
 
 export const isTokenAtom = atom({
   key: "isTokenAtom",
-  default: false,
+  default: localStorage.getItem("accessToken") !== null,
 });

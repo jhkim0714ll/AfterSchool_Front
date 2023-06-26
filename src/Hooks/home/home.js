@@ -1,13 +1,11 @@
 import { useRecoilValue } from "recoil";
 import { isTokenAtom } from "../../recoil/tokenAtom";
-import { userAtom } from "../../recoil/userAtom";
 import { useEffect, useState } from "react";
 import { customAxios } from "../../lib/axios/customAxios";
 import showToast from "../../lib/toast/toast";
 
 const useHome = () => {
   const isToken = useRecoilValue(isTokenAtom);
-  const user = useRecoilValue(userAtom);
   const [content, setContent] = useState({
     afterClass: ["로그인 이후에 사용 가능합니다"],
     attendance: "로그인 이후에 사용 가능합니다",
@@ -30,12 +28,14 @@ const useHome = () => {
               newContent["afterClass"] = ["신청한 방과후가 없습니다"];
               return newContent;
             });
+            return;
           } else {
             setContent((current) => {
               let newContent = { ...current };
               newContent["afterClass"] = data.data;
               return newContent;
             });
+            return;
           }
         }
       } catch (error) {
@@ -43,6 +43,11 @@ const useHome = () => {
         showToast(data.message, "ERROR");
       }
     }
+    setContent((current) => {
+      let newContent = { ...current };
+      newContent["afterClass"] = ["로그인 이후 사용해 가능합니다"];
+      return newContent;
+    });
   };
 
   const getAttendanceData = async () => {
@@ -77,23 +82,30 @@ const useHome = () => {
     }
   };
 
-  const getMealData = async (schoolId) => {
+  const getMealData = async () => {
     if (isToken) {
       try {
-        const { data } = await customAxios.get(`/meal/${schoolId}`);
-        if (data.status === 200) {
-          if (data.data.length === 0) {
-            setContent((current) => {
-              let newContent = { ...current };
-              newContent["meal"] = ["오늘은 급식이 없습니다"];
-              return newContent;
-            });
-          } else {
-            setContent((current) => {
-              let newContent = { ...current };
-              newContent["meal"] = data.data;
-              return newContent;
-            });
+        const userData = await customAxios.get("/users/my");
+        if (userData.data.status === 200) {
+          const mealData = await customAxios.get(
+            `/meal/${userData.data.data.schoolId}`
+          );
+          if (mealData.data.status === 200) {
+            if (mealData.data.data.length === 0) {
+              setContent((current) => {
+                let newContent = { ...current };
+                newContent["meal"] = ["오늘은 급식이 없습니다"];
+                return newContent;
+              });
+              return;
+            } else {
+              setContent((current) => {
+                let newContent = { ...current };
+                newContent["meal"] = mealData.data.data;
+                return newContent;
+              });
+              return;
+            }
           }
         }
       } catch (error) {
@@ -102,6 +114,11 @@ const useHome = () => {
         return;
       }
     }
+    setContent((current) => {
+      let newContent = { ...current };
+      newContent["meal"] = ["로그인 이후에 사용 가능합니다"];
+      return newContent;
+    });
   };
 
   const getSchooldata = async (homepage) => {
@@ -114,15 +131,6 @@ const useHome = () => {
     }
   };
 
-  const renderContent = async () => {
-    await getClassData(); //class
-    await getAttendanceData(); //attendance
-    await getSurveyData(); //survey
-    await getMealData(user.schoolId); //meal
-    //adv
-    await getSchooldata(); //schoolInfo
-  };
-
   const sumitSchool = () => {
     if (content.school) {
       window.location.href = content.school;
@@ -132,7 +140,11 @@ const useHome = () => {
   };
 
   useEffect(() => {
-    renderContent();
+    getClassData();
+    getAttendanceData();
+    getSurveyData();
+    getMealData();
+    getSchooldata();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

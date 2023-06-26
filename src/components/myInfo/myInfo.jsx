@@ -1,9 +1,17 @@
 import "./myInfo.css";
 import { ChangeButtonStyled } from "../styled/buttonStyled";
 import useMyInfo from "../../Hooks/myInfo/myInfo";
+import { useEffect } from "react";
 
 const MyInfo = () => {
-  const { sumitMyInfo, sumitMyClass, sumitMySchool } = useMyInfo();
+  const { userInfo, getUserInfo, sumitMyInfo, sumitMyClass, sumitMySchool } =
+    useMyInfo();
+
+  useEffect(() => {
+    getUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div id="myInfo-page-container">
       <div id="myInfo-field-container">
@@ -29,26 +37,32 @@ const MyInfo = () => {
             <div className="profile-content">
               <div className="profile-content-title">이름</div>
               <div className="profile-content-content">
-                <div>박소영</div>
+                <div>{userInfo.name}</div>
               </div>
             </div>
             <div className="profile-content">
               <div className="profile-content-title">역할</div>
               <div className="profile-content-content">
-                <div>선생님</div>
+                <div>
+                  {userInfo.role === "STUDENT"
+                    ? "학생"
+                    : userInfo.role === "TEACHER"
+                    ? "선생님"
+                    : "관리자"}
+                </div>
               </div>
             </div>
             <div className="profile-content">
               <div className="profile-content-title">Email</div>
               <div className="profile-content-content">
-                <div>test@gmail.com</div>
+                <div>{userInfo.email}</div>
               </div>
             </div>
             <div className="profile-content">
               <div className="profile-content-title">전화번호</div>
               <div className="changeable-content">
                 <div className="profile-content-content">
-                  <div>010-1234-1234</div>
+                  <div>{userInfo.phone}</div>
                 </div>
                 <ChangeButtonStyled>변경</ChangeButtonStyled>
               </div>
@@ -57,7 +71,7 @@ const MyInfo = () => {
               <div className="profile-content-title">학교</div>
               <div className="changeable-content">
                 <div className="profile-content-content">
-                  <div>대구소프트웨어마이스터고등학교</div>
+                  <div>{userInfo.school}</div>
                 </div>
                 <ChangeButtonStyled>변경</ChangeButtonStyled>
               </div>

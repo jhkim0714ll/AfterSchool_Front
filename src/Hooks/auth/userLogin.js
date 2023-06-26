@@ -1,5 +1,4 @@
 import { useRecoilState } from "recoil";
-import { isTokenAtom } from "../../recoil/tokenAtom";
 import { noTokenCustomAxios } from "../../lib/axios/customAxios";
 import { useState } from "react";
 import config from "../../config/config.json";
@@ -10,15 +9,15 @@ import { userAtom } from "../../recoil/userAtom";
 
 const useLogin = () => {
   const navigate = useNavigate();
-  const [isToken, setIsToken] = useRecoilState(isTokenAtom);
   const [user, setUser] = useRecoilState(userAtom);
-  if (isToken) {
-    navigate("/home");
-  }
   const [loginData, setLoginData] = useState({
     email: "",
     pw: "",
   });
+
+  if (localStorage.getItem("accessToken") !== null) {
+    navigate("/home");
+  }
 
   const onChange = (event) => {
     const {
@@ -57,7 +56,6 @@ const useLogin = () => {
       showToast(data.message, "SUCCESS");
       if (data.data) {
         localStorage.setItem("accessToken", data.data.accessToken);
-        setIsToken(true);
         setUser({
           email: data.data.user.email,
           name: data.data.user.name,
@@ -76,6 +74,7 @@ const useLogin = () => {
   };
 
   return {
+    user,
     onChange,
     onSubmit,
     loginData,

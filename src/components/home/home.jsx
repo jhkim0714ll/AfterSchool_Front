@@ -22,12 +22,18 @@ function Home() {
             </CardTitleDivStyled>
             <div className="class-card-content">
               {content.afterClass.map((classroom) => {
-                if (!classroom.classroom) {
+                if (
+                  localStorage.getItem("accessToken") === null ||
+                  classroom === "로그인 이후에 사용 가능합니다"
+                ) {
                   return (
                     <div>
                       <a href="/login">로그인 이후에 사용 가능합니다</a>
                     </div>
                   );
+                }
+                if (classroom.classroom === undefined) {
+                  return <div>신청한 방과후가 없습니다</div>;
                 }
                 return (
                   <div
@@ -85,48 +91,45 @@ function Home() {
               오늘의 급식
             </CardTitleDivStyled>
             <div className="meal-card-content">
-              {content.meal.map((meal) => {
-                const now = new Date();
+              {
+                // eslint-disable-next-line
+                content.meal.map((meal) => {
+                  const now = new Date();
 
-                const year = now.getFullYear();
-                const month = ("0" + (now.getMonth() + 1)).slice(-2);
-                const day = ("0" + now.getDate()).slice(-2);
+                  const year = now.getFullYear();
+                  const month = ("0" + (now.getMonth() + 1)).slice(-2);
+                  const day = ("0" + now.getDate()).slice(-2);
 
-                const today = year + "-" + month + "-" + day;
-                if (meal.date === undefined) {
-                  return (
-                    <div>
-                      <a href="/login">로그인 이후에 사용 가능합니다</a>
-                    </div>
-                  );
-                }
-                if (meal.date === today)
-                  return (
-                    <div key={meal.date}>
-                      <div className="meal-content">
-                        <div className="meal-content-title">
-                          <img src={breakfastIcon} alt="breakfast" />
-                          <div>조식</div>
+                  const today = year + "-" + month + "-" + day;
+
+                  if (meal.date === today)
+                    return (
+                      <div key={meal.date}>
+                        <div className="meal-content">
+                          <div className="meal-content-title">
+                            <img src={breakfastIcon} alt="breakfast" />
+                            <div>조식</div>
+                          </div>
+                          <div>{meal.breakfast}</div>
                         </div>
-                        <div>{meal.breakfast}</div>
-                      </div>
-                      <div className="meal-content">
-                        <div className="meal-content-title">
-                          <img src={lunchIcon} alt="lunch" />
-                          <div> 중식</div>
+                        <div className="meal-content">
+                          <div className="meal-content-title">
+                            <img src={lunchIcon} alt="lunch" />
+                            <div> 중식</div>
+                          </div>
+                          <div>{meal.lunch}</div>
                         </div>
-                        <div>{meal.lunch}</div>
-                      </div>
-                      <div className="meal-content">
-                        <div className="meal-content-title">
-                          <img src={dinnerIcon} alt="dinner" />
-                          <div> 석식</div>
+                        <div className="meal-content">
+                          <div className="meal-content-title">
+                            <img src={dinnerIcon} alt="dinner" />
+                            <div> 석식</div>
+                          </div>
+                          <div>{meal.dinner}</div>
                         </div>
-                        <div>{meal.dinner}</div>
                       </div>
-                    </div>
-                  );
-              })}
+                    );
+                })
+              }
             </div>
           </CardDivStyled>
           <CardDivStyled id="school-card-container">

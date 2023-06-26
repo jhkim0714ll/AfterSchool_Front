@@ -1,0 +1,106 @@
+#after-school-page-container {
+  display: flex;
+  justify-content: center;
+  background-color: #f6f6f6;
+  height: 88vh;
+  width: 100vw;
+  flex-direction: row;
+}
+
+#after-school-field-container {
+  margin-top: 3%;
+  display: flex;
+  align-items: center;
+  width: 70%;
+  height: 70%;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: white;
+}
+
+#after-school-search-container {
+  margin-top: 5%;
+  width: 45%;
+  border: 1px solid white;
+  border-color: gray;
+  border-radius: 3%;
+  height: 5%;
+  display: flex;
+  flex-direction: row;
+}
+
+#searchIcon {
+  width: 15%;
+}
+
+#searchInput {
+  margin-left: 3%;
+  width: 100%;
+  background-color: white;
+  outline: none;
+  border: none;
+  font-size: large;
+}
+
+#searchInput:focus {
+  outline: none;
+}
+
+#after-school-list-container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+}
+
+#after-school-title-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.after-school-title {
+  width: 10%;
+  display: flex;
+  margin-left: 4%;
+}
+
+.after-school-title-title {
+  width: 10%;
+  display: flex;
+}
+
+.after-school-title-description {
+  display: flex;
+  width: 25%;
+  margin-right: 3%;
+}
+
+.after-school-content-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.after-school-content-title {
+  display: flex;
+  width: 10%;
+}
+
+.after-school-content {
+  display: flex;
+  width: 10%;
+  margin-left: 4%;
+}
+
+.after-school-content-description {
+  width: 25%;
+  margin-right: 3%;
+}
+
+.after-school-apply {
+  border-radius: 5px;
+  padding: 0.5% 1.2%;
+  outline: none;
+  cursor: pointer;
+  border: none;
+}

@@ -1,0 +1,14 @@
+#attendance-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 88vh;
+}
+
+#attendance-field-container {
+  display: flex;
+  margin-bottom: 10%;
+  font-size: xx-large;
+}
